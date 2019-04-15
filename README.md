@@ -21,7 +21,7 @@ Spring Boot Starter For WebMvc With Swagger2
 ################################################################################################################  
 ###接口文档（Swagger UI）配置：  
 ################################################################################################################
-swagger2:
+swagger:
   enabled: true
   title: Swagger WebMvc Demo
   description: Swagger WebMvc Demo
