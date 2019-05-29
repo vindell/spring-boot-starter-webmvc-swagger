@@ -38,7 +38,16 @@ public class Swagger2WebMvcProperties {
 	 * 是否开启swagger
 	 **/
 	private boolean enabled;
-
+	/**
+	 * when true it enables rfc6570 url templates
+	 */
+	private boolean enableUrlTemplating = false;
+	/**
+	 * Set this to true in order to make the documentation code generation friendly.
+	 *
+	 * true|false determines the naming strategy used
+	 */
+	private boolean forCodeGen = false;
 	/**
 	 * 标题
 	 **/
@@ -122,6 +131,22 @@ public class Swagger2WebMvcProperties {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	public boolean isEnableUrlTemplating() {
+		return enableUrlTemplating;
+	}
+
+	public boolean isForCodeGen() {
+		return forCodeGen;
+	}
+
+	public void setEnableUrlTemplating(boolean enableUrlTemplating) {
+		this.enableUrlTemplating = enableUrlTemplating;
+	}
+
+	public void setForCodeGen(boolean forCodeGen) {
+		this.forCodeGen = forCodeGen;
 	}
 
 	public String getTitle() {
