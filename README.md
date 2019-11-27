@@ -1,4 +1,4 @@
-# spring-boot-starter-webmvc-swagger2
+# webmvc-swagger2-spring-boot-starter
 
 Spring Boot Starter For WebMvc With Swagger2
 
@@ -10,7 +10,7 @@ Spring Boot Starter For WebMvc With Swagger2
 
 	<dependency>
 		<groupId>com.github.vindell</groupId>
-		<artifactId>spring-boot-starter-webmvc-swagger2</artifactId>
+		<artifactId>webmvc-swagger2-spring-boot-starter</artifactId>
 		<version>${project.version}</version>
 	</dependency>
 
