@@ -105,7 +105,7 @@ public class Swagger2WebMvcProperties {
 	 * 分组文档
 	 **/
 	@NestedConfigurationProperty
-	private List<DocketInfo> groups = new ArrayList<>();
+	private List<DocketInfo> groups = new ArrayList<DocketInfo>();
 
 	/**
 	 * 全局参数配置
