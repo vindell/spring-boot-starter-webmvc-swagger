@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 import io.springfox.spring.boot.model.Authorization;
 import io.springfox.spring.boot.model.Contact;
@@ -82,6 +83,7 @@ public class Swagger2WebMvcProperties {
 	 **/
 	private List<Class<?>> ignoredParameterTypes = new ArrayList<>();
 
+	@NestedConfigurationProperty
 	private Contact contact = new Contact();
 
 	/**
@@ -102,6 +104,7 @@ public class Swagger2WebMvcProperties {
 	/**
 	 * 分组文档
 	 **/
+	@NestedConfigurationProperty
 	private List<DocketInfo> groups = new ArrayList<>();
 
 	/**
@@ -112,6 +115,7 @@ public class Swagger2WebMvcProperties {
 	/**
 	 * 页面功能配置
 	 **/
+	@NestedConfigurationProperty
 	private UiConfig uiConfig = new UiConfig();
 
 	/**
@@ -122,11 +126,13 @@ public class Swagger2WebMvcProperties {
 	/**
 	 * 全局响应消息
 	 **/
+	@NestedConfigurationProperty
 	private GlobalResponseMessage globalResponseMessage;
 
 	/**
 	 * 全局统一鉴权配置
 	 **/
+	@NestedConfigurationProperty
 	private Authorization authorization = new Authorization();
 
 }
