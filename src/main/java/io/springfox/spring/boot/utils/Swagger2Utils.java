@@ -49,7 +49,7 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.ApiKeyVehicle;
 
-/**
+/*
  * TODO
  * @author 		： <a href="https://github.com/hiwepy">wandl</a>
  */
@@ -168,40 +168,40 @@ public class Swagger2Utils {
 	}
 	
 
-	/**
+	/*
 	 * 配置基于 ApiKey 的鉴权对象
 	 *
-	 * @return
+	 * @return ApiKey
 	 */
 	public static ApiKey apiKey(Swagger2WebMvcProperties swaggerProperties) {
 		return new ApiKey(swaggerProperties.getAuthorization().getName(),
 				swaggerProperties.getAuthorization().getKeyName(), ApiKeyVehicle.HEADER.getValue());
 	}
 
-	/**
+	/*
 	 * 配置基于 BasicAuth 的鉴权对象
 	 *
-	 * @return
+	 * @return BasicAuth
 	 */
 	public static BasicAuth basicAuth(Swagger2WebMvcProperties swaggerProperties) {
 		return new BasicAuth(swaggerProperties.getAuthorization().getName());
 	}
 
-	/**
+	/*
 	 * 配置默认的全局鉴权策略的开关，以及通过正则表达式进行匹配；默认 ^.*$ 匹配所有URL 其中 securityReferences 为配置启用的鉴权策略
 	 *
-	 * @return
+	 * @return SecurityContext
 	 */
 	public static SecurityContext securityContext(Swagger2WebMvcProperties swaggerProperties) {
 		return SecurityContext.builder().securityReferences(defaultAuth(swaggerProperties))
 				.forPaths(PathSelectors.regex(swaggerProperties.getAuthorization().getAuthRegex())).build();
 	}
 
-	/**
+	/*
 	 * 配置默认的全局鉴权策略；其中返回的 SecurityReference 中，reference
 	 * 即为ApiKey对象里面的name，保持一致才能开启全局鉴权
 	 *
-	 * @return
+	 * @return List<SecurityReference>
 	 */
 	public static List<SecurityReference> defaultAuth(Swagger2WebMvcProperties swaggerProperties) {
 		AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
@@ -228,12 +228,12 @@ public class Swagger2Utils {
 		return parameters;
 	}
 
-	/**
+	/*
 	 * 局部参数按照name覆盖局部参数
 	 *
-	 * @param globalOperationParameters
-	 * @param docketOperationParameters
-	 * @return
+	 * @param globalOperationParameters  全局参数
+	 * @param docketOperationParameters  当前分组参数
+	 * @return List<Parameter> 
 	 */
 	public static List<Parameter> assemblyGlobalOperationParameters(List<GlobalOperationParameter> globalOperationParameters,
 			List<GlobalOperationParameter> docketOperationParameters) {
@@ -259,7 +259,7 @@ public class Swagger2Utils {
 		return buildGlobalOperationParametersFromSwagger2WebMvcProperties(resultOperationParameters);
 	}
 
-	/**
+	/*
 	 * 设置全局响应消息
 	 *
 	 * @param swaggerProperties swaggerProperties 支持
@@ -291,11 +291,11 @@ public class Swagger2Utils {
 				.globalResponseMessage(RequestMethod.TRACE, trackResponseMessages);
 	}
 
-	/**
+	/*
 	 * 获取返回消息体列表
 	 *
 	 * @param globalResponseMessageBodyList 全局Code消息返回集合
-	 * @return
+	 * @return List<ResponseMessage>
 	 */
 	public static List<ResponseMessage> getResponseMessageList(
 			List<GlobalResponseMessageBody> globalResponseMessageBodyList) {
