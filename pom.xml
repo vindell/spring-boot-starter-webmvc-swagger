@@ -613,6 +613,10 @@
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+		</dependency>
 
 	</dependencies>
 	
