@@ -27,7 +27,7 @@ public class GlobalResponseMessageBody {
 	/**
 	 * 响应码
 	 **/
-	private int code;
+	private String code;
 
 	/**
 	 * 响应消息

@@ -36,7 +36,7 @@ import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * 参考https://my.oschina.net/go4it/blog/3035218
@@ -47,7 +47,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @Configuration
 @ConditionalOnProperty(prefix = Swagger2WebMvcProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Swagger2WebMvcProperties.class })
-@EnableSwagger2WebMvc
+@EnableSwagger2
 @Import({ BeanValidatorPluginsConfiguration.class })
 public class Swagger2WebMvcAutoConfiguration implements BeanFactoryAware {
 
