@@ -54,6 +54,11 @@ public class Swagger2WebMvcAutoConfiguration implements BeanFactoryAware {
 	private BeanFactory beanFactory;
 
 	@Bean
+	public Swagger2UiWebMvcConfigurer swagger2UiWebMvcConfigurer() {
+		return new Swagger2UiWebMvcConfigurer();
+	}
+	
+	@Bean
 	public UiConfiguration uiConfiguration(Swagger2WebMvcProperties swaggerProperties) {
 		return UiConfigurationBuilder.builder()
 				.deepLinking(swaggerProperties.getUiConfig().getDeepLinking())

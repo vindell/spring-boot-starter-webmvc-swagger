@@ -13,7 +13,7 @@
 	<groupId>com.github.hiwepy</groupId>
 	<artifactId>webmvc-swagger2-spring-boot-starter</artifactId>
 	<description>Spring Boot Starter For WebMvc With Swagger2</description>
-	<version>1.0.0.RELEASE</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<url>https://github.com/hiwepy/${project.artifactId}</url>
 	<packaging>jar</packaging>
@@ -383,6 +383,7 @@
 		<!-- http://oss.jfrog.org/artifactory/oss-snapshot-local/io/springfox/ -->
 		<springfox.version>2.10.5</springfox.version> <!-- 3.0.0-SNAPSHOT -->
 		<swagger.version>1.5.24</swagger.version>
+		<webjars-locator.version>0.40</webjars-locator.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -544,6 +545,13 @@
 			    <version>${swagger.version}</version>
 			</dependency>
 			
+			<!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator -->
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>webjars-locator</artifactId>
+				<version>${webjars-locator.version}</version>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 	
@@ -611,7 +619,18 @@
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <optional>true</optional>
 		</dependency>
-
+		
+		<!-- For Spring Webmvc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<!-- For Webjars -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>webjars-locator</artifactId>
+		</dependency>
+		
 	</dependencies>
 	
 
