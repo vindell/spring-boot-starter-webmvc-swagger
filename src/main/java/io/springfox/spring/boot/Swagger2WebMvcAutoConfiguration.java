@@ -61,11 +61,12 @@ public class Swagger2WebMvcAutoConfiguration implements BeanFactoryAware {
 		return new Swagger2UiWebMvcConfigurer();
 	}
 	
-	@Primary
-	@Bean
-	public ServiceModelToSwagger2Mapper ServiceModelToSwagger2Mapper() {
-		return new ExtendServiceModelToSwagger2MapperImpl();
-	}
+	/*
+	 * @Primary
+	 * 
+	 * @Bean public ServiceModelToSwagger2Mapper ServiceModelToSwagger2Mapper() {
+	 * return new ExtendServiceModelToSwagger2MapperImpl(); }
+	 */
 	
 	@Bean
 	public UiConfiguration uiConfiguration(Swagger2WebMvcProperties swaggerProperties) {

@@ -382,7 +382,7 @@
 		<maven-nexus-staging-plugin.version>1.6.8</maven-nexus-staging-plugin.version>
 		<!-- http://oss.jfrog.org/artifactory/oss-snapshot-local/io/springfox/ -->
 		<springfox.version>2.10.5</springfox.version> <!-- 3.0.0-SNAPSHOT -->
-		<swagger.version>1.5.24</swagger.version>
+		<swagger.version>1.6.2</swagger.version>
 		<webjars-locator.version>0.40</webjars-locator.version>
 	</properties>
 	
@@ -562,6 +562,13 @@
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
 		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.73</version>
 		</dependency>
 		
 		<!-- Java Servlet API -->

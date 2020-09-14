@@ -147,6 +147,14 @@ public class SwaggerUtil {
 			return !SwaggerUtil.isBaseType(type);
 		}
 	}
+	
+	public static boolean hasGenerics(String type) {
+		if (type.indexOf("»") > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
  
 	/**
 	 * 递归处理泛型类型 <br>
