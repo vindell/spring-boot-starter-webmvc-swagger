@@ -29,7 +29,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 
+import io.springfox.spring.boot.extend.ExtendServiceModelToSwagger2MapperImpl;
 import io.springfox.spring.boot.model.DocketInfo;
 import io.springfox.spring.boot.utils.Swagger2Utils;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
@@ -37,6 +39,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+import springfox.documentation.swagger2.mappers.ServiceModelToSwagger2Mapper;
 
 /**
  * 参考https://my.oschina.net/go4it/blog/3035218
@@ -56,6 +59,12 @@ public class Swagger2WebMvcAutoConfiguration implements BeanFactoryAware {
 	@Bean
 	public Swagger2UiWebMvcConfigurer swagger2UiWebMvcConfigurer() {
 		return new Swagger2UiWebMvcConfigurer();
+	}
+	
+	@Primary
+	@Bean
+	public ServiceModelToSwagger2Mapper ServiceModelToSwagger2Mapper() {
+		return new ExtendServiceModelToSwagger2MapperImpl();
 	}
 	
 	@Bean
