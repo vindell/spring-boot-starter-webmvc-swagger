@@ -384,6 +384,8 @@
 		<springfox.version>2.10.5</springfox.version> <!-- 3.0.0-SNAPSHOT -->
 		<swagger.version>1.6.2</swagger.version>
 		<webjars-locator.version>0.40</webjars-locator.version>
+		<webjars-locator-core.version>0.46</webjars-locator-core.version>
+		<classgraph.version>4.8.102</classgraph.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -551,7 +553,19 @@
 				<artifactId>webjars-locator</artifactId>
 				<version>${webjars-locator.version}</version>
 			</dependency>
-			
+			<!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator-core -->
+			<dependency>
+			    <groupId>org.webjars</groupId>
+			    <artifactId>webjars-locator-core</artifactId>
+			    <version>${webjars-locator-core.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.github.classgraph/classgraph -->
+			<dependency>
+			    <groupId>io.github.classgraph</groupId>
+			    <artifactId>classgraph</artifactId>
+			    <version>${classgraph.version}</version>
+			</dependency>
+						
 		</dependencies>
 	</dependencyManagement>
 	
@@ -562,13 +576,6 @@
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
 		    <scope>compile</scope>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-		<dependency>
-		    <groupId>com.alibaba</groupId>
-		    <artifactId>fastjson</artifactId>
-		    <version>1.2.73</version>
 		</dependency>
 		
 		<!-- Java Servlet API -->
@@ -642,6 +649,14 @@
 		<dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>webjars-locator</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>webjars-locator-core</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>io.github.classgraph</groupId>
+		    <artifactId>classgraph</artifactId>
 		</dependency>
 		
 	</dependencies>

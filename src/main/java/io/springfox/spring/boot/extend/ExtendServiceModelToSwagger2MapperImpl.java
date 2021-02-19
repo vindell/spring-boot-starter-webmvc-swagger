@@ -20,7 +20,8 @@ import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 
-import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.springfox.spring.boot.utils.SwaggerUtil;
 import io.swagger.models.Model;
@@ -45,6 +46,8 @@ import springfox.documentation.swagger2.mappers.ServiceModelToSwagger2MapperImpl
 @Slf4j
 public class ExtendServiceModelToSwagger2MapperImpl extends ServiceModelToSwagger2MapperImpl {
 
+	private ObjectMapper objectMapper = new ObjectMapper();
+	
 	@Override
 	public Swagger mapDocumentation(Documentation from) {
 		Swagger swagger = super.mapDocumentation(from);
@@ -59,7 +62,10 @@ public class ExtendServiceModelToSwagger2MapperImpl extends ServiceModelToSwagge
 				Map<String, Property> props = model.getProperties();
 				Property dataProp = props.get("data");
 				Property newProp = SwaggerUtil.getNewProp(dataProp, SwaggerUtil.getRealType(key), swagger.getDefinitions());
-				log.debug("newProp:{}", JSONObject.toJSONString(newProp));
+				try {
+					log.debug("newProp:{}", objectMapper.writeValueAsString(newProp));
+				} catch (JsonProcessingException e) {
+				}
 				props.put("data", newProp);
 			}
 		}
@@ -123,7 +129,10 @@ public class ExtendServiceModelToSwagger2MapperImpl extends ServiceModelToSwagge
 			}
 		}
 		
-		log.debug("swagger:{}", JSONObject.toJSONString(swagger));
+		try {
+			log.debug("swagger:{}", objectMapper.writeValueAsString(swagger));
+		} catch (JsonProcessingException e) {
+		}
 		return swagger;
 	}
 
