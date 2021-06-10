@@ -15,16 +15,12 @@
  */
 package io.springfox.spring.boot.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
- * SecuritySchemes 支持方式之一 ApiKey
+ * securitySchemes 支持方式之一 ApiKey
  */
-@Getter
-@Setter
-@ToString
+@Data
 public class Authorization {
 
 	/**

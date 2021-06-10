@@ -15,17 +15,12 @@
  */
 package io.springfox.spring.boot.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 import springfox.documentation.swagger.web.DocExpansion;
 import springfox.documentation.swagger.web.ModelRendering;
 import springfox.documentation.swagger.web.OperationsSorter;
 import springfox.documentation.swagger.web.TagsSorter;
-
-@Getter
-@Setter
-@ToString
+@Data
 public class UiConfig {
 
     private String apiSorter = "alpha";
