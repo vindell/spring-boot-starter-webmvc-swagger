@@ -268,8 +268,7 @@ public class Swagger2Utils {
 	/*
 	 * 设置全局响应消息
 	 *
-	 * @param swaggerProperties swaggerProperties 支持
-	 *                          POST,GET,PUT,PATCH,DELETE,HEAD,OPTIONS,TRACE
+	 * @param swaggerProperties swaggerProperties 支持 POST,GET,PUT,PATCH,DELETE,HEAD,OPTIONS,TRACE
 	 * @param docketForBuilder  swagger docket builder
 	 */
 	public static void buildGlobalResponseMessage(Swagger2WebMvcProperties swaggerProperties, Docket docketForBuilder) {
