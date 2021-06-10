@@ -223,6 +223,7 @@ public class Swagger2Utils {
 					.description(globalOperationParameter.getDescription())
 					.defaultValue(globalOperationParameter.getDefaultValue())
 					.allowEmptyValue(globalOperationParameter.isAllowEmptyValue())
+					.scalarExample(globalOperationParameter.getScalarExample())
 					.modelRef(new ModelRef(globalOperationParameter.getModelRef()))
 					.parameterType(globalOperationParameter.getParameterType())
 					.pattern(globalOperationParameter.getPattern())
