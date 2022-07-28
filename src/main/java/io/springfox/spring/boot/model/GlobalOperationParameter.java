@@ -15,13 +15,9 @@
  */
 package io.springfox.spring.boot.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class GlobalOperationParameter {
 	
 	/**
@@ -33,6 +29,11 @@ public class GlobalOperationParameter {
 	 * 描述信息
 	 **/
 	private String description;
+	
+	/**
+	 * 默认值
+	 **/
+	private String defaultValue;
 
 	/**
 	 * 指定参数类型
@@ -47,6 +48,26 @@ public class GlobalOperationParameter {
 	/**
 	 * 参数是否必须传
 	 **/
-	private String required;
+	private boolean required;
+	
+	/**
+	 * 参数是否隐藏
+	 **/
+	private boolean hidden;
+	
+	/**
+	 * 参数格式
+	 **/
+	private String pattern;
+  
+	/**
+	 * 参数是否允许为空
+	 **/
+	private boolean allowEmptyValue;
+	
+	/**
+	 * 参数示例
+	 **/
+	private Object scalarExample;
 
 }

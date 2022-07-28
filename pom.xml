@@ -13,7 +13,7 @@
 	<groupId>com.github.hiwepy</groupId>
 	<artifactId>webmvc-swagger2-spring-boot-starter</artifactId>
 	<description>Spring Boot Starter For WebMvc With Swagger2</description>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<url>https://github.com/hiwepy/${project.artifactId}</url>
 	<packaging>jar</packaging>
@@ -374,33 +374,171 @@
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
 		<maven-nexus-staging-plugin.version>1.6.8</maven-nexus-staging-plugin.version>
-		<springfox.version>3.0.0</springfox.version>
-		<swagger2.version>2.1.9</swagger2.version>
+		<!-- http://oss.jfrog.org/artifactory/oss-snapshot-local/io/springfox/ -->
+		<springfox.version>2.10.5</springfox.version> <!-- 3.0.0-SNAPSHOT -->
+		<swagger.version>1.6.2</swagger.version>
 		<webjars-locator.version>0.40</webjars-locator.version>
 		<webjars-locator-core.version>0.46</webjars-locator-core.version>
 		<classgraph.version>4.8.102</classgraph.version>
-		<swagger-knife4j-ui.version>3.0.3</swagger-knife4j-ui.version>
-		<swagger-springfox-ui.version>${springfox.version}</swagger-springfox-ui.version> 
 	</properties>
 	
 	<dependencyManagement>
 		<dependencies>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-bean-validators -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-bean-validators</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-core -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-core</artifactId>
+			   <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-data-rest -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-data-rest</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-petstore -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-petstore</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-petstore-webflux</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-schema -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-schema</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spi -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spi</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-config -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spring-config</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-integration -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spring-integration</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-integration-webflux -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spring-integration-webflux</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-integration-webmvc -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spring-integration-webmvc</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-web -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spring-web</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-webflux -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spring-webflux</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-webmvc -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spring-webmvc</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-common -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-swagger-common</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-swagger-ui</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger1 -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-swagger1</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+			<dependency>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-swagger2</artifactId>
+			    <version>${springfox.version}</version>
+			</dependency>
 			
-			<!-- https://mvnrepository.com/artifact/io.swagger.core.v3 -->
+			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-spring-web -->
 			<dependency>
-				<groupId>io.swagger.core.v3</groupId>
-				<artifactId>swagger-core</artifactId>
-				<version>${swagger2.version}</version>
+			    <groupId>io.springfox</groupId>
+			    <artifactId>springfox-spring-web</artifactId>
+			    <version>${springfox.version}</version>
 			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/io.swagger -->
 			<dependency>
-				<groupId>io.swagger.core.v3</groupId>
+				<groupId>io.swagger</groupId>
 				<artifactId>swagger-annotations</artifactId>
-				<version>${swagger2.version}</version>
+				<version>${swagger.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>io.swagger.core.v3</groupId>
-				<artifactId>swagger-models</artifactId>
-				<version>${swagger2.version}</version>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-core</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-models</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-jaxrs</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-servlet</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-jersey-jaxrs</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-jersey2-jaxrs</artifactId>
+			    <version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>io.swagger</groupId>
+			    <artifactId>swagger-hibernate-validations</artifactId>
+			    <version>${swagger.version}</version>
 			</dependency>
 			
 			<!-- https://mvnrepository.com/artifact/org.webjars/webjars-locator -->
@@ -421,26 +559,7 @@
 			    <artifactId>classgraph</artifactId>
 			    <version>${classgraph.version}</version>
 			</dependency>
-			
-			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
-			<dependency>
-			    <groupId>io.springfox</groupId>
-			    <artifactId>springfox-boot-starter</artifactId>
-			    <version>${springfox.version}</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
-			<dependency>
-			    <groupId>io.springfox</groupId>
-			    <artifactId>springfox-swagger-ui</artifactId>
-			    <version>${swagger-springfox-ui.version}</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-ui -->
-			<dependency>
-			    <groupId>com.github.xiaoymin</groupId>
-			    <artifactId>knife4j-spring-ui</artifactId>
-			    <version>${swagger-knife4j-ui.version}</version>
-			</dependency>
-			
+						
 		</dependencies>
 	</dependencyManagement>
 	
@@ -491,31 +610,47 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-
-		<!-- For Webjars -->
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>webjars-locator</artifactId>
-		</dependency>
-        <!-- For SpringFox 3.x -->
-        <dependency>
+ 		<dependency>
 		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-boot-starter</artifactId>
+		    <artifactId>springfox-bean-validators</artifactId>
 		</dependency>
-		<!-- For Swagger UI -->
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>io.github.classgraph</groupId>
+		    		<artifactId>classgraph</artifactId>
+		    	</exclusion>
+		    </exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-spring-webmvc</artifactId>
+		</dependency>
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <optional>true</optional>
 		</dependency>
+		
+		<!-- For Spring Webmvc -->
 		<dependency>
-			<groupId>com.github.xiaoymin</groupId>
-			<artifactId>knife4j-spring-ui</artifactId>
-			<optional>true</optional>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<!-- For Webjars -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>webjars-locator</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>webjars-locator-core</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>io.github.classgraph</groupId>
+		    <artifactId>classgraph</artifactId>
 		</dependency>
 		
 	</dependencies>
