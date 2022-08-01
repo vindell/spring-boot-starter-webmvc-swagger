@@ -15,12 +15,15 @@
  */
 package io.springfox.spring.boot;
 
+import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -32,8 +35,11 @@ import org.springframework.context.annotation.Import;
 
 import io.springfox.spring.boot.model.DocketInfo;
 import io.springfox.spring.boot.utils.Swagger2Utils;
+import org.springframework.util.ReflectionUtils;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.spring.web.plugins.WebMvcRequestHandlerProvider;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
@@ -116,6 +122,44 @@ public class Swagger2WebMvcAutoConfiguration implements BeanFactoryAware {
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
 		this.beanFactory = beanFactory;
+	}
+
+	/** 解决不兼容问题
+	 * https://developer.aliyun.com/article/950787
+	 * https://github.com/springfox/springfox/issues/3462?spm=a2c6h.12873639.article-detail.6.1f714b49B4FXeZ
+	 * @return BeanPostProcessor
+	 */
+	@Bean
+	public static BeanPostProcessor springfoxHandlerProviderBeanWebMvcPostProcessor() {
+		return new BeanPostProcessor() {
+
+			@Override
+			public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+				if (bean instanceof WebMvcRequestHandlerProvider) {
+					customizeSpringfoxHandlerMappings(getHandlerMappings(bean));
+				}
+				return bean;
+			}
+
+			private <T extends RequestMappingInfoHandlerMapping> void customizeSpringfoxHandlerMappings(List<T> mappings) {
+				List<T> copy = mappings.stream()
+						.filter(mapping -> mapping.getPatternParser() == null)
+						.collect(Collectors.toList());
+				mappings.clear();
+				mappings.addAll(copy);
+			}
+
+			@SuppressWarnings("unchecked")
+			private List<RequestMappingInfoHandlerMapping> getHandlerMappings(Object bean) {
+				try {
+					Field field = ReflectionUtils.findField(bean.getClass(), "handlerMappings");
+					field.setAccessible(true);
+					return (List<RequestMappingInfoHandlerMapping>) field.get(bean);
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					throw new IllegalStateException(e);
+				}
+			}
+		};
 	}
 
 }
